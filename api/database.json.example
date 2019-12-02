@@ -1,8 +1,311 @@
 {
-  "users": [],
-  "articles": [],
-  "messages": [],
-  "events": [],
-  "tasks": [],
-  "friends": []
+  "users": [
+    {
+      "id": 1,
+      "username": "Steve",
+      "email": "me@me.com",
+      "password": "123"
+    },
+    {
+      "username": "James",
+      "email": "james@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "username": "Sully",
+      "email": "sully@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 4,
+      "username": "Adam",
+      "email": "adam@gmail.com",
+      "password": "123"
+    },
+    {
+      "username": "Manila",
+      "email": "manila@gmail.com",
+      "password": "123",
+      "id": 5
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
+      "title": "Wormholes Allow Information to Escape Black Holes",
+      "synopsis": "Check out this recent discovery about wormholes.",
+      "timestamp": "Fri Nov 08 2019 10:15:44 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "url": "https://www.nbc-2.com/story/41302947/florida-man-sues-madonna-for-being-late-to-her-own-concert",
+      "title": "Florida man sues Madonna for being late to her own concert",
+      "synopsis": "He said when he bought the tickets, the show was set to begin at 8:30 but changed to 10:30.",
+      "timestamp": "Mon Nov 11 2019 13:53:32 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "url": "https://www.wsmv.com/news/woman-shot-in-the-chest-while-staying-at-gulch-apartment/article_51027660-0468-11ea-9c2e-1f6101eff811.html",
+      "title": "Woman shot in the chest while staying at Gulch apartment",
+      "synopsis": "Police tell us they responded to Velocity in the Gulch apartments on 11th Avenue South and found the victim shot in her upper body.",
+      "timestamp": "Mon Nov 11 2019 15:12:24 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "url": "https://www.nbc-2.com/story/41302947/florida-man-sues-madonna-for-being-late-to-her-own-concert",
+      "title": "Florida man sues Madonna for being late to her own concert",
+      "synopsis": "He said when he bought the tickets, the show was set to begin at 8:30 but changed to 10:30.",
+      "timestamp": "Mon Nov 11 2019 13:53:32 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "title": "16 best home remedies for dark circles",
+      "synopsis": "If you too are one of the numerous people tormented by dark circles, stress not, there are a few home solutions to treat them.",
+      "url": "https://timesofindia.indiatimes.com/life-style/beauty/16-best-home-remedies-for-dark-circles/articleshow/23399685.cms",
+      "timestamp": "Fri Nov 15 2019 09:12:05 GMT-0600 (Central Standard Time)",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "title": "The Art of the Awkward Silence in “A Beautiful Day in the Neighborhood”",
+      "synopsis": "Tom Hanks and Matthew Rhys star in Marielle Heller’s film about Mr. Rogers.",
+      "url": "https://www.newyorker.com/magazine/2019/11/25/the-art-of-the-awkward-silence-in-a-beautiful-day-in-the-neighborhood",
+      "timestamp": "Fri Nov 15 2019 13:45:38 GMT-0600 (Central Standard Time)",
+      "userId": 1,
+      "id": 6
+    }
+  ],
+  "messages": [
+    {
+      "userId": 1,
+      "message": "What's up?",
+      "timestamp": 1573675137476,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "message": "heyyyyy",
+      "timestamp": 1573847908009,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "message": "hey buddy! how are you?",
+      "timestamp": 1573674893926,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "message": "hey buddy!!!!",
+      "timestamp": 1573676550737,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "message": "this is fun!!!",
+      "timestamp": 1573675815360,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "message": "hey steve",
+      "timestamp": 1573676537638,
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "message": "Hiiii",
+      "timestamp": 1573676537610,
+      "id": 8
+    },
+    {
+      "userId": 3,
+      "message": "stop saying hi to me",
+      "timestamp": 1573676537620,
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "message": "This is getting too hot for me. I'm out.",
+      "timestamp": 1583686548830,
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "message": "Let's party.",
+      "timestamp": 1571616548830,
+      "id": 11
+    },
+    {
+      "userId": 4,
+      "message": "You do you, boo.",
+      "timestamp": 1583686548850,
+      "id": 12
+    },
+    {
+      "userId": 3,
+      "message": "Ok. I will.",
+      "timestamp": 1583686548856,
+      "id": 13
+    },
+    {
+      "userId": 3,
+      "message": "...but first, I must dance.",
+      "timestamp": 1583686548880,
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "message": "Hello hi!",
+      "timestamp": 1583686548980,
+      "id": 15
+    },
+    {
+      "userId": 4,
+      "message": "Omigah, Steve.",
+      "timestamp": 1583686549910,
+      "id": 16
+    },
+    {
+      "userId": 2,
+      "message": "Steve is becoming a real problem.",
+      "timestamp": 1583686559910,
+      "id": 16
+    },
+    {
+      "userId": 3,
+      "message": "Steve be killin' my vibe yo. I don't wanna dance anymore.",
+      "timestamp": 1583686569910,
+      "id": 16
+    },
+    {
+      "userId": "1",
+      "message": "hello",
+      "timestamp": 1573847884949,
+      "id": 17
+    }
+  ],
+  "events": [
+    {
+      "userId": 1,
+      "name": "Christmas",
+      "date": "2019-12-25",
+      "location": "Earth",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "name": "Beautimosity.",
+      "date": "2019-11-15",
+      "location": "Here",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "name": "Potluck",
+      "date": "2019-11-15",
+      "location": "My home",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "name": "bjoie",
+      "date": "2019-11-15",
+      "location": "there",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "name": "beep",
+      "date": "2019-11-14",
+      "location": "boop",
+      "id": 6
+    }
+  ],
+  "tasks": [
+    {
+      "userId": 1,
+      "taskName": "working",
+      "dueDate": "2019-11-11",
+      "completion": true,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "taskName": "the great expanse",
+      "dueDate": "",
+      "completion": true,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "taskName": "bjpawiobjk",
+      "dueDate": "2019-11-14",
+      "completion": true,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "taskName": "gpwjeaoi",
+      "dueDate": "2019-11-14",
+      "completion": true,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "taskName": "Go home",
+      "dueDate": "2019-11-15",
+      "completion": false,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "taskName": "Eat cheese",
+      "dueDate": "2019-11-15",
+      "completion": false,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "taskName": "Cook lots of food",
+      "dueDate": "2019-11-15",
+      "completion": false,
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "taskName": "p",
+      "dueDate": "2019-11-14",
+      "completion": true,
+      "id": 10
+    }
+  ],
+  "friends": [
+    {
+      "id": 1,
+      "userId": 1,
+      "loggedInUserId": 3
+    },
+    {
+      "userId": 2,
+      "loggedInUserId": 1,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "loggedInUserId": 1,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "loggedInUserId": 1,
+      "id": 4
+    }
+  ]
 }
