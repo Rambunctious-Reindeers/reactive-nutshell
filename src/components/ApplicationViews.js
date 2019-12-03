@@ -6,6 +6,8 @@ import ArticleList from "./news/ArticleList";
 import ArticleForm from "./news/ArticleForm";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
+import TaskList from './task/TaskList'
+import TaskForm from './task/TaskForm'
 
 localStorage.setItem("userId", 1);
 
@@ -25,7 +27,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route 
+        <Route
           exact path="/login" render={props => {
             return <Login setUser={this.props.setUser} {...props} />
           }}
@@ -46,9 +48,20 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          exact path="/tasks" render={props => {
+            return <TaskList {...props} />
+          }}
+        />
+
+        <Route
+          exact path="/tasks/new" render={props => {
+            return <TaskForm {...props} isNew={true}/>
+          }}
+        />
+
+        <Route
+          exact path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskForm {...props} isNew={false}/>
           }}
         />
 
@@ -57,15 +70,15 @@ export default class ApplicationViews extends Component {
             return <EventList {...props} />
           }}
         />
-        <Route 
-        exact path="/events/new" render={props => {
-          return <EventForm {...props} isNew={true} />
-        }} 
+        <Route
+          exact path="/events/new" render={props => {
+            return <EventForm {...props} isNew={true} />
+          }}
         />
-        <Route 
-        exact path="/events/:eventId(\d+)/edit" render={props =>{
-          return <EventForm {...props} isNew={false} />
-        }}
+        <Route
+          exact path="/events/:eventId(\d+)/edit" render={props => {
+            return <EventForm {...props} isNew={false} />
+          }}
         />
 
         <Route 
