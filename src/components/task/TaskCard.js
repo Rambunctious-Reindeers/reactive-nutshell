@@ -5,15 +5,19 @@ import "../Nutshell.css"
 
 class TaskCard extends Component {
 
-    
+
 
     render() {
 
         const { taskName, dueDate } = this.props.task;
 
+        const cardCheckbox = this.props.task.completion ?
+            <input type="checkbox" defaultChecked={true} onClick={() => this.props.handleCheckbox((this.props.task.id), this.props.task.completion)} /> :
+            <input type="checkbox"  onClick={() => this.props.handleCheckbox(this.props.task.id)} />
+
         const cardContent =
             <div className="card-content">
-               <input type="checkbox" onClick={() => this.props.handleCheckbox(this.props.task.id)}/>
+                {cardCheckbox}
                 <h3>Task: <b>{taskName}</b></h3>
                 <p>Finish By: {dueDate}</p>
 

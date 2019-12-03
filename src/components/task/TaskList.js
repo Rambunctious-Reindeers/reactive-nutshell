@@ -6,54 +6,56 @@ import TaskCard from './TaskCard'
 class TaskList extends Component {
 
     state = {
-        tasks: [],
+        uncompleteTasks: [],
+        completeTasks: [],
     }
 
     componentDidMount() {
         localStorage.setItem("userId", 1)
+        this.getTasksAndSetState()
+    }
+
+    getTasksAndSetState = () => {
         const userId = localStorage.getItem("userId")
         APIManager.getAll(`tasks?userId=${userId}`)
             .then((tasks) => {
-                const completedTasks = tasks.filter(task => !task.completion)
-                const sortedTasks = completedTasks.sort(function (a, b) {
+                const uncompletedTasks = tasks.filter(task => !task.completion)
+                const sortedUncompleteTasks = uncompletedTasks.sort(function (a, b) {
+                    let dateA = new Date(a.dueDate), dateB = new Date(b.dueDate)
+                    return dateA - dateB
+                })
+                const completedTasks = tasks.filter(task => task.completion)
+                const sortedCompleteTasks = completedTasks.sort(function (a, b) {
                     let dateA = new Date(a.dueDate), dateB = new Date(b.dueDate)
                     return dateA - dateB
                 })
                 this.setState({
-                    tasks: sortedTasks
+                    uncompleteTasks: sortedUncompleteTasks,
+                    completeTasks: sortedCompleteTasks
                 })
             })
     }
 
     deleteTask = id => {
-        const userId = localStorage.getItem("userId")
+       
         APIManager.delete("tasks", id)
             .then(() => {
-                APIManager.getAll(`tasks?userId=${userId}`)
-                    .then((newTasks) => {
-                        this.setState({
-                            tasks: newTasks
-                        })
-                    })
+                this.getTasksAndSetState()
             })
     }
 
-    handleCheckbox = (id) => {
-        const userId = localStorage.getItem("userId")
+    handleCheckbox = (id, completed) => {
+        if (!completed) {
         APIManager.patch("tasks", id, { completion: true })
             .then(() => {
-                APIManager.getAll(`tasks?userId=${userId}`)
-                    .then((tasks) => {
-                        const completedTasks = tasks.filter(task => !task.completion)
-                const sortedTasks = completedTasks.sort(function (a, b) {
-                    let dateA = new Date(a.dueDate), dateB = new Date(b.dueDate)
-                    return dateA - dateB
-                })
-                this.setState({
-                    tasks: sortedTasks
-                })
-                    })
+                this.getTasksAndSetState()
             })
+        } else {
+            APIManager.patch("tasks", id, { completion: false })
+            .then(() => {
+                this.getTasksAndSetState()
+            })
+        }
     }
 
     render() {
@@ -69,11 +71,25 @@ class TaskList extends Component {
                     </button>
                 </section>
                 <div className="container-cards">
-                    {this.state.tasks.map((task, index) =>
+                    <h2>Uncompleted:</h2>
+                    {this.state.uncompleteTasks.map((task, index) =>
                         <TaskCard
                             key={task.id}
                             task={task}
                             isFirst={index === 0}
+                            deleteTask={this.deleteTask}
+                            handleCheckbox={this.handleCheckbox}
+                            {...this.props}
+                        />
+                    )}
+                </div>
+                <div className="container-cards">
+                    <h2>Completed:</h2>
+                    {this.state.completeTasks.map((task) =>
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            isFirst={false}
                             deleteTask={this.deleteTask}
                             handleCheckbox={this.handleCheckbox}
                             {...this.props}
