@@ -1,12 +1,18 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Home from "./home/Home";
+import Login from "./auth/Login";
+import EventList from "./event/EventList";
+import EventForm from "./event/EventForm";
 
 export default class ApplicationViews extends Component {
+
+  isAuthenticated = () => localStorage.getItem("credentials") !== null
 
   render() {
     return (
       <React.Fragment>
+
 
         <Route
           exact path="/" render={props => {
@@ -19,6 +25,12 @@ export default class ApplicationViews extends Component {
           exact path="/register" render={props => {
             return null
             // Remove null and return the component which will handle user registration
+          }}
+        />
+
+        <Route 
+          exact path="/login" render={props => {
+            return <Login setUser={this.props.setUser} {...props} />
           }}
         />
 
@@ -44,10 +56,20 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/events" render={props => {
-            return null
+          exact path="/events" render={props => {
+            return <EventList {...props} />
             // Remove null and return the component which will show the user's events
           }}
+        />
+        <Route 
+        exact path="/events/new" render={props => {
+          return <EventForm {...props} isNew={true} />
+        }} 
+        />
+        <Route 
+        exact path="/events/:eventId(\d+)/edit" render={props =>{
+          return <EventForm {...props} isNew={false} />
+        }}
         />
 
       </React.Fragment>
