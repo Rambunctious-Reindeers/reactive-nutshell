@@ -5,7 +5,8 @@ class Login extends Component {
   // Set initial state
   state = {
     email: "",
-    password: ""
+    password: "",
+    userId: "",
   }
 
   // Update state whenever an input field is edited
@@ -21,7 +22,8 @@ class Login extends Component {
         "credentials",
         JSON.stringify({
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            userId: this.state.userId,
         })
     )
     this.props.history.push("/");
