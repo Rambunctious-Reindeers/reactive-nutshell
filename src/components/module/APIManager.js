@@ -6,11 +6,11 @@ export default {
 
     get(page, id) {
         return fetch(`${remoteURL}/${page}/${id}`)
-        .then(r => r.json())
+            .then(r => r.json())
     },
     getAll(page) {
         return fetch(`${remoteURL}/${page}`)
-        .then(r => r.json())
+            .then(r => r.json())
     },
     post(page, newItem) {
         return fetch(`${remoteURL}/${page}`, {
@@ -38,5 +38,14 @@ export default {
     getMessages() {
         return fetch(`${remoteURL}/messages?_expand=user`)
         .then(r => r.json())
+    },
+    patch(page, id, changedItem) {
+        return fetch(`${remoteURL}/${page}/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(changedItem)
+        }).then(data => data.json())
     }
 }

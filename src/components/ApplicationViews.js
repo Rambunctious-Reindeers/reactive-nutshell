@@ -5,6 +5,8 @@ import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
 import MessageList from "./message/MessageList";
 import MessageForm from "./message/MessageForm";
+import TaskList from './task/TaskList'
+import TaskForm from './task/TaskForm'
 
 export default class ApplicationViews extends Component {
 
@@ -45,16 +47,14 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/messages" render={props => {
             return <MessageList {...props} />
-            // Remove null and return the component which will show the messages
           }}
         />
-
         <Route
           exact path="/messages/new" render={props => {
             return <MessageForm {...props} isNew={true} />
+
           }}
         />
-
         <Route
           exact path="/messages/:messageId(\d+)/edit" render={props => {
             return <MessageForm {...props} isNew={false} />
@@ -62,9 +62,18 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          exact path="/tasks" render={props => {
+            return <TaskList {...props} />
+          }}
+        />
+        <Route
+          exact path="/tasks/new" render={props => {
+            return <TaskForm {...props} isNew={true} />
+          }}
+        />
+        <Route
+          exact path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskForm {...props} isNew={false} />
           }}
         />
 
