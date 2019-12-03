@@ -33,4 +33,6 @@ export default {
             method: "DELETE",
         }).then(data => data.json())
     },
+
+
 }

@@ -4,6 +4,8 @@ import Home from "./home/Home";
 import Login from "./auth/Login";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
+import FriendList from "./friend/FriendList";
+import FriendForm from "./friend/FriendForm"
 
 export default class ApplicationViews extends Component {
 
@@ -36,9 +38,13 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+            return <FriendList {...props}/>
           }}
+        />
+                <Route 
+        exact path="/friends/new" render={props => {
+          return <FriendForm {...props} />
+        }} 
         />
 
         <Route
