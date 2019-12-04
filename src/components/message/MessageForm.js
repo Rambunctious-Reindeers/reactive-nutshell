@@ -4,7 +4,7 @@ import APIManager from '../module/APIManager';
 class MessageForm extends Component {
 
     state = {
-        userName: localStorage.getItem("credentials", 1),
+        userId: localStorage.getItem("userId"),
         message: "",
         timestamp: "",
         loadingStatus: false,
@@ -18,12 +18,13 @@ class MessageForm extends Component {
 
     constructNewMessage = evt => {
         evt.preventDefault();
-        if (this.state.userName === "" || this.state.messages === "") {
-            window.alert("Please enter a name and a message!")
+        if (this.state.messages === "") {
+            window.alert("Please enter a message!")
         } else {
             this.setState({ loadingStatus: true });
+            const userId = localStorage.getItem("userId")
             const message = {
-                name: this.state.userName,
+                userId: Number(userId),
                 message: this.state.message,
                 timestamp: Date.now()
             }
@@ -38,7 +39,7 @@ class MessageForm extends Component {
         this.setState({ loadingStatus: true });
         const editedMessage = {
             id: this.props.match.params.messageId,
-            Username: this.state.userName,
+            userId: Number(localStorage.getItem("userId")),
             message: this.state.message,
             timestamp: Date.now(),
         };
@@ -52,8 +53,7 @@ class MessageForm extends Component {
             APIManager.get("messages", this.props.match.params.messageId)
             .then(message => {
               this.setState({
-                userName: message.name,
-                message: message.date,
+                message: message.message,
                 loadingStatus: false,
               });
             });
@@ -70,17 +70,9 @@ class MessageForm extends Component {
                                 type="text"
                                 required
                                 onChange={this.handleFieldChange}
-                                id="userName"
-                                value= {this.state.userName}
-                            />
-                            <label htmlFor="userName">Name</label>
-                            <input
-                                type="text"
-                                required
-                                onChange={this.handleFieldChange}
                                 id="message"
                                 placeholder="Message"
-                                value= {this.state.message}
+                                value={this.state.message}
                             />
                             <label htmlFor="date">message</label>
                             
