@@ -1,3 +1,5 @@
+import Login from "../auth/Login"
+
 const remoteURL = "http://localhost:5002"
 
 export default {
@@ -32,6 +34,10 @@ export default {
         return fetch(`${remoteURL}/${page}/${id}`, {
             method: "DELETE",
         }).then(data => data.json())
+    },
+    getMessages() {
+        return fetch(`${remoteURL}/messages?_expand=user`)
+        .then(r => r.json())
     },
     patch(page, id, changedItem) {
         return fetch(`${remoteURL}/${page}/${id}`, {

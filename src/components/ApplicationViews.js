@@ -1,11 +1,13 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import Home from "./home/Home";
 import Login from "./auth/Login";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
+import MessageList from "./message/MessageList";
+import MessageForm from "./message/MessageForm";
 import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
+import RegistrationForm from "./auth/RegistrationForm";
 
 export default class ApplicationViews extends Component {
 
@@ -18,15 +20,15 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return Home
+            return null
             // Remove null and return the component which will show news articles
           }}
         />
 
         <Route
           exact path="/register" render={props => {
-            return null
-            // Remove null and return the component which will handle user registration
+            return <RegistrationForm setUser={this.props.setUser} {...props} />
+            
           }}
         />
 
@@ -44,9 +46,19 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          exact path="/messages" render={props => {
+            return <MessageList {...props} />
+          }}
+        />
+        <Route
+          exact path="/messages/new" render={props => {
+            return <MessageForm {...props} isNew={true} />
+
+          }}
+        />
+        <Route
+          exact path="/messages/:messageId(\d+)/edit" render={props => {
+            return <MessageForm {...props} isNew={false} />
           }}
         />
 
@@ -55,23 +67,20 @@ export default class ApplicationViews extends Component {
             return <TaskList {...props} />
           }}
         />
-
         <Route
           exact path="/tasks/new" render={props => {
-            return <TaskForm {...props} isNew={true}/>
+            return <TaskForm {...props} isNew={true} />
           }}
         />
-
         <Route
           exact path="/tasks/:taskId(\d+)/edit" render={props => {
-            return <TaskForm {...props} isNew={false}/>
+            return <TaskForm {...props} isNew={false} />
           }}
         />
 
         <Route
           exact path="/events" render={props => {
             return <EventList {...props} />
-            // Remove null and return the component which will show the user's events
           }}
         />
         <Route
