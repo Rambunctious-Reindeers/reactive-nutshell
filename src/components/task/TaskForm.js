@@ -41,7 +41,7 @@ class TaskForm extends Component {
             id: this.props.match.params.taskId,
             taskName: this.state.taskName,
             dueDate: this.state.date,
-            userId: Number(localStorage.getItem("userId"))
+            userId: Number(JSON.parse(localStorage.getItem("credentials")).userId)
         };
 
         APIManager.put("tasks", this.props.match.params.taskId, editedTask)
