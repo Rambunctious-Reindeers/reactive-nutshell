@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FriendList from '../friend/FriendList'
 import MessageList from '../message/MessageList'
-import NewsList from '../news/NewsList'
+import ArticleList from '../news/ArticleList'
 import EventList from '../event/EventList'
 import TaskList from '../event/EventList'
 
@@ -17,7 +17,7 @@ export default class Home extends Component {
                     <MessageList />
                 </div>
                 <div id="newsContainer" className="container">
-                    <NewsList />
+                    <ArticleList />
                 </div>
                 <div id="eventContainer" className="container">
                     <EventList />
