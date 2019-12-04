@@ -1,3 +1,5 @@
+/* author: James Chapman   Purpose: Login for the app */
+
 import React, { Component } from "react"
 
 class Login extends Component {
@@ -5,7 +7,8 @@ class Login extends Component {
   // Set initial state
   state = {
     email: "",
-    password: ""
+    password: "",
+    userId: "",
   }
 
   // Update state whenever an input field is edited
@@ -21,7 +24,8 @@ class Login extends Component {
         "credentials",
         JSON.stringify({
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            userId: this.state.userId,
         })
     )
     this.props.history.push("/");
@@ -38,7 +42,7 @@ class Login extends Component {
                     id="email"
                     placeholder="Email address"
                     required="" autoFocus="" />
-                <label htmlFor="inputEmail">Email address</label>
+                <label htmlFor="inputEmail">Email Address</label>
 
                 <input onChange={this.handleFieldChange} type="password"
                     id="password"
