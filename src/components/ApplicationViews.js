@@ -5,6 +5,8 @@ import ArticleList from "./news/ArticleList";
 import ArticleForm from "./news/ArticleForm";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
+import FriendList from "./friend/FriendList";
+import FriendForm from "./friend/FriendForm"
 import MessageList from "./message/MessageList";
 import MessageForm from "./message/MessageForm";
 import TaskList from './task/TaskList'
@@ -34,9 +36,13 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+          exact path="/friends" render={props => {
+            return <FriendList {...props} />
+          }}
+        />
+        <Route
+          path="/friends/new" render={props => {
+            return <FriendForm {...props} />
           }}
         />
 
@@ -108,25 +114,25 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-            return <ArticleList {...props} />
-          } else { return <Redirect to="/login" /> }
+              return <ArticleList {...props} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           path="/articles/new"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={true} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={true} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />
         <Route
           path="/articles/:articleId(\d+)/edit"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={false} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={false} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />
@@ -135,3 +141,5 @@ export default class ApplicationViews extends Component {
     );
   }
 }
+
+
