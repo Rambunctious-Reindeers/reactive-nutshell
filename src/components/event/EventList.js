@@ -13,29 +13,34 @@ class EventList extends Component {
     }
 
     componentDidMount() {
-        APIManager.getAll("events")
-            .then((events) => {
-                const sortEvents = events.sort(function (a, b) {
-                    let dateA = new Date(a.date), dateB = new Date(b.date)
-                    return dateA - dateB
-                })
-                this.setState({
-                    events: sortEvents
-                })
+        this.props.buildFriendsList()
+            .then((friendsList) => {
+
+                APIManager.getAll("events")
+                    .then((events) => {
+                        const yourEvents = events.filter((event) => friendsList.includes(event.userId))
+                        const sortEvents = yourEvents.sort(function (a, b) {
+                            let dateA = new Date(a.date), dateB = new Date(b.date)
+                            return dateA - dateB
+                        })
+                        this.setState({
+                            events: sortEvents
+                        })
+                    })
             })
     }
 
     deleteEvent = id => {
         APIManager.delete("events", id)
-          .then(() => {
-            APIManager.getAll("events")
-              .then((newEvents) => {
-                this.setState({
-                  events: newEvents
-                })
-              })
-          })
-      }
+            .then(() => {
+                APIManager.getAll("events")
+                    .then((newEvents) => {
+                        this.setState({
+                            events: newEvents
+                        })
+                    })
+            })
+    }
 
     render() {
 
@@ -54,7 +59,7 @@ class EventList extends Component {
                         <EventCard
                             key={event.id}
                             event={event}
-                            isFirst={ index === 0 }
+                            isFirst={index === 0}
                             deleteEvent={this.deleteEvent}
                             {...this.props}
                         />

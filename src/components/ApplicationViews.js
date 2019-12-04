@@ -23,14 +23,16 @@ export default class ApplicationViews extends Component {
 
 
   buildFriendsList = () => {
-    APIManager.getAll("friends")
-    .then((allFriends) => allFriends.filter(friendship => {
-      if (friendship.loggedInUser === this.getUserId()) {
-        return true
-      } else {
-        return false
-      }
-    }))
+    return APIManager.getAll("friends")
+      .then((allFriends) => {
+        return allFriends.filter(friendship => {
+          if (friendship.loggedInUserId === this.getUserId()) {
+            return true
+          } else {
+            return false
+          }
+        }).map((friendship) => friendship.userId)
+      })
   }
 
   render() {
@@ -45,7 +47,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/login" render={props => {
-            return <Login setUser={this.props.setUser} {...props} />
+            return <Login setUser={this.props.setUser} isAuthenticated={this.isAuthenticated} {...props} />
           }}
         />
 
@@ -105,7 +107,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/events" render={props => {
             if (this.props.user) {
-              return <EventList {...props} buildFriendsList={this.buildFriendsList}/>
+              return <EventList {...props} buildFriendsList={this.buildFriendsList} />
             } else { return <Redirect to="/login" /> }
           }}
         />
@@ -128,7 +130,7 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-              return <ArticleList {...props} />
+              return <ArticleList {...props} buildFriendsList={this.buildFriendsList} />
             } else { return <Redirect to="/login" /> }
           }}
         />
