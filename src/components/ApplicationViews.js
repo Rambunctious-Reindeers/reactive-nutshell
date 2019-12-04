@@ -20,8 +20,6 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/" render={props => Home} />
-
         <Route
           exact path="/register" render={props => {
             return <RegistrationForm setUser={this.props.setUser} {...props} />
