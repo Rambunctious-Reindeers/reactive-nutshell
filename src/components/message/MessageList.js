@@ -15,8 +15,8 @@ class MessageList extends Component {
         APIManager.getMessages()
             .then((messages) => {
                 const sortMessages = messages.sort(function (a, b) {
-                    let dateA = new Date(a.date), dateB = new Date(b.date)
-                    return dateA - dateB
+                    let d1 = new Date(a.timestamp), d2 = new Date(b.timestamp)
+                    return d1 - d2
                 })
                 this.setState({
                     messages: sortMessages
@@ -36,6 +36,46 @@ class MessageList extends Component {
           })
       }
 
+      
+    addFriend = id => {
+        console.log(id)
+        // evt.preventDefault();
+
+        let potentialFriendId = id
+        let loggedInUserId = JSON.parse(localStorage.getItem("credentials")).userId
+
+
+        APIManager.getAll(`users?id=${id}`)
+            .then(response => {
+                if (response.length === 0) {
+                    window.alert("Please enter correct username")
+                } else {
+                    potentialFriendId = parseInt(response[0].id)
+                    APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
+                    .then(r => {
+                        const comparePotentialFriendToUsername = r.filter(r => (r.user.id===id))
+                        if (potentialFriendId===loggedInUserId) {
+                            window.alert("You cannot friend yourself")
+                        }  else if  (comparePotentialFriendToUsername.length > 0) {
+                            window.alert(`You are already friends with this person!`)
+                        } else {
+                            const friendObject = {
+                                loggedInUserId: loggedInUserId,
+                                userId: potentialFriendId
+                        }
+                        APIManager.post("friends", friendObject)
+                        .then(() => {
+                        this.props.history.push("/messages")
+                        
+                    })
+
+                    }})
+                }
+            }
+            )
+    }
+
+
     render() {
 
         return (
@@ -53,6 +93,7 @@ class MessageList extends Component {
                         <MessageCard
                             key={message.id}
                             message={message}
+                            addFriend={this.addFriend}
                             deleteMessage={this.deleteMessage}
                             {...this.props}
                         />
