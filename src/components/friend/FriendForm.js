@@ -15,10 +15,11 @@ class FriendForm extends Component {
     }
 
     addNewFriend = evt => {
+        console.log(evt)
         evt.preventDefault();
 
         let potentialFriendId
-        let loggedInUserId = parseInt(localStorage.getItem("userId"))
+        let loggedInUserId = JSON.parse(localStorage.getItem("credentials")).userId
 
 
         APIManager.getAll(`users?username=${this.state.friendName}`)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import FriendCard from './FriendCard'
 
-let loggedInUserId = parseInt(localStorage.getItem("userId"))
+let loggedInUserId = JSON.parse(localStorage.getItem("credentials")).userId
 
 class FriendList extends Component {
 
@@ -22,10 +22,10 @@ class FriendList extends Component {
       deleteFriend = id => {
         APIManager.delete("friends", id)
           .then(() => {
-            APIManager.getAll("friends")
+            APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
               .then((newFriends) => {
                 this.setState({
-                  events: newFriends
+                  friends: newFriends
                 })
               })
           })

@@ -12,7 +12,9 @@ class MessageCard extends Component {
 
         return (
             <div className="card-content">
+                <div className="add-friend" onClick={() => {if(window.confirm('Do you want to add as a friend?')) this.props.addFriend(this.props.message.user.id)}}>
                 <h3>Name: <b>{this.props.message.user.username}</b></h3>
+                </div>
                 <p>Message: {this.props.message.message}</p>
 
                 <button type="button"
