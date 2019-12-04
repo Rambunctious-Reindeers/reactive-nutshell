@@ -10,6 +10,7 @@ import MessageForm from "./message/MessageForm";
 import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
+import { Redirect } from "react-router-dom"
 
 localStorage.setItem("userId", 1);
 
@@ -23,7 +24,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/register" render={props => {
             return <RegistrationForm setUser={this.props.setUser} {...props} />
-            
+
           }}
         />
 
@@ -42,7 +43,9 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/messages" render={props => {
-            return <MessageList {...props} />
+            if (this.props.user) {
+              return <MessageList {...props} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
@@ -53,53 +56,80 @@ export default class ApplicationViews extends Component {
         />
         <Route
           exact path="/messages/:messageId(\d+)/edit" render={props => {
+
             return <MessageForm {...props} isNew={false} />
           }}
         />
 
         <Route
           exact path="/tasks" render={props => {
-            return <TaskList {...props} />
+            if (this.props.user) {
+              return <TaskList {...props} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           exact path="/tasks/new" render={props => {
-            return <TaskForm {...props} isNew={true} />
+            if (this.props.user) {
+              return <TaskForm {...props} isNew={true} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           exact path="/tasks/:taskId(\d+)/edit" render={props => {
-            return <TaskForm {...props} isNew={false} />
+            if (this.props.user) {
+              return <TaskForm {...props} isNew={false} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
 
         <Route
           exact path="/events" render={props => {
-            return <EventList {...props} />
+            if (this.props.user) {
+              return <EventList {...props} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           exact path="/events/new" render={props => {
-            return <EventForm {...props} isNew={true} />
+            if (this.props.user) {
+              return <EventForm {...props} isNew={true} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           exact path="/events/:eventId(\d+)/edit" render={props => {
-            return <EventForm {...props} isNew={false} />
+            if (this.props.user) {
+              return <EventForm {...props} isNew={false} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
 
-        <Route 
-          exact path="/articles" 
-          render={props => <ArticleList {...props} />} 
+        <Route
+          exact path="/articles"
+          render={props => {
+            if (this.props.user) {
+            return <ArticleList {...props} />
+          } else { return <Redirect to="/login" /> }
+          }}
         />
-        <Route 
-          path="/articles/new" 
-          render={props => <ArticleForm {...props} isNew={true} />} 
+        <Route
+          path="/articles/new"
+          render={props => { 
+            if (this.props.user) {
+            return <ArticleForm {...props} isNew={true} /> 
+          } else { return <Redirect to="/login" /> }
+          }
+          }
         />
-        <Route 
-          path="/articles/:articleId(\d+)/edit" 
-          render={props => <ArticleForm {...props} isNew={false} />}
+        <Route
+          path="/articles/:articleId(\d+)/edit"
+          render={props => { 
+            if (this.props.user) {
+            return <ArticleForm {...props} isNew={false} /> 
+          } else { return <Redirect to="/login" /> }
+          }
+          }
         />
 
       </React.Fragment>

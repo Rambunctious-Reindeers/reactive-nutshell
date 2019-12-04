@@ -11,12 +11,11 @@ class TaskList extends Component {
     }
 
     componentDidMount() {
-        localStorage.setItem("userId", 1)
         this.getTasksAndSetState()
     }
 
     getTasksAndSetState = () => {
-        const userId = localStorage.getItem("userId")
+        const userId = JSON.parse(localStorage.getItem("credentials")).userId
         APIManager.getAll(`tasks?userId=${userId}`)
             .then((tasks) => {
                 const uncompletedTasks = tasks.filter(task => !task.completion)

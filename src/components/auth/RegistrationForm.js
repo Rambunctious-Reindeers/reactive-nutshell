@@ -6,7 +6,7 @@ import APIManager from '../module/APIManager'
 class RegistrationForm extends Component {
 
     state = {
-        username:"",
+        username: "",
         email: "",
         password: "",
         loadingStatus: false,
@@ -20,44 +20,61 @@ class RegistrationForm extends Component {
 
     handleRegistration = (entry) => {
         entry.preventDefault()
-        this.setState({ loadingStatus: true })
-        const registration = {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
+        if(this.state.username ==="" || this.state.email === "" || this.state.password === ""){
+            window.alert("You must fill in every field.")
+        } else {
+            this.setState({ loadingStatus: true })
+    const registration = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+    }
+    APIManager.post("users", registration)
+        .then(() =>
+            APIManager.getAll(`users?email=${this.state.email}`)
+                .then((newUser) => {
+                    this.props.setUser({
+                        email: this.state.email,
+                        password: this.state.password,
+                        userId: newUser[0].id
+                    })
+                    this.props.history.push("/")
+                })
+
+        )
         }
-        APIManager.post("users", registration)
-            .then(() => this.props.history.push("/"))
     }
 
-    render(){
-        return(
+    
+
+    render() {
+        return (
             <form onSubmit={this.handleRegistration}>
                 <h3>Register an Account</h3>
                 <div className="formgrid">
-                    <input 
-                    onChange={this.handleFieldChange}
-                    type="username"
-                    id="username"
-                    placeholder="Full Name"
-                    required="" autoFocus="" />
                     <label htmlFor="inputUsername">Username</label>
+                    <input
+                        onChange={this.handleFieldChange}
+                        type="username"
+                        id="username"
+                        placeholder="Full Name"
+                        required="" autoFocus="" />
 
-                    <input 
-                    onChange={this.handleFieldChange}
-                    type="email"
-                    id="email"
-                    placeholder="Email Address"
-                    required="" autoFocus="" />
                     <label htmlFor="inputEmail">Email Address</label>
+                    <input
+                        onChange={this.handleFieldChange}
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required="" autoFocus="" />
 
-                    <input 
-                    onChange={this.handleFieldChange}
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    required="" autoFocus="" />
                     <label htmlFor="inputPassword">Password</label>
+                    <input
+                        onChange={this.handleFieldChange}
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required="" autoFocus="" />
 
                 </div>
 

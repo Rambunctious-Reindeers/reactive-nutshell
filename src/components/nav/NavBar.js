@@ -38,7 +38,9 @@ class NavBar extends Component {
                 </ul>
                 <span className="navbar-text">
                     <ul className="nav nav-pills nav-fill">
-
+                        {
+                        !this.props.isAuthenticated() ?
+                        <>
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Login</Link>
                         </li>
@@ -46,6 +48,12 @@ class NavBar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
+                        </>
+                        : 
+                        <li className="nav-item">
+                            <button className="nav btn" onClick={this.handleLogout}>Logout</button>
+                        </li>
+                        }
 
 
                     </ul>

@@ -23,7 +23,7 @@ class Nutshell extends Component {
 
   clearUser = () => {
     localStorage.removeItem("credentials")
-
+    
     this.setState({
       user: this.isAuthenticated
     });
@@ -38,7 +38,7 @@ class Nutshell extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar user={this.state.user} clearUser={this.clearUser} />
+        <NavBar user={this.state.user} clearUser={this.clearUser} isAuthenticated={this.isAuthenticated}/>
         <ApplicationViews user={this.state.user} setUser={this.setUser} />
       </React.Fragment>
     );
