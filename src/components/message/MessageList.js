@@ -1,3 +1,5 @@
+/* author: James Chapman | purpose: this card builds the main page for messages */
+
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import MessageCard from './MessageCard'

@@ -1,10 +1,12 @@
+/* author: James Chapman | purpose: this is the page that will populate the new message and edit message forms */
+
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager';
 
 class MessageForm extends Component {
 
     state = {
-        userId: localStorage.getItem("userId"),
+        userId: JSON.parse(localStorage.getItem("credentials")).userId,
         message: "",
         timestamp: "",
         loadingStatus: false,
@@ -22,7 +24,7 @@ class MessageForm extends Component {
             window.alert("Please enter a message!")
         } else {
             this.setState({ loadingStatus: true });
-            const userId = localStorage.getItem("userId")
+            const userId = JSON.parse(localStorage.getItem("credentials")).userId
             const message = {
                 userId: Number(userId),
                 message: this.state.message,
@@ -39,7 +41,7 @@ class MessageForm extends Component {
         this.setState({ loadingStatus: true });
         const editedMessage = {
             id: this.props.match.params.messageId,
-            userId: Number(localStorage.getItem("userId")),
+            userId: JSON.parse(localStorage.getItem("credentials")).userId,
             message: this.state.message,
             timestamp: Date.now(),
         };

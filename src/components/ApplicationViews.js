@@ -12,7 +12,6 @@ import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
 
-localStorage.setItem("userId", 1);
 
 export default class ApplicationViews extends Component {
 

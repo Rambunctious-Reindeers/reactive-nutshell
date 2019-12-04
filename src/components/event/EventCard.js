@@ -1,3 +1,5 @@
+/* author: James Chapman | this was pair coded with the rest of the group |  purpose: This will create the cards that eventList uses to populate the event board */
+
 import React, { Component } from 'react'
 import "../Nutshell.css"
 
