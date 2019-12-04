@@ -5,19 +5,18 @@ import APIManager from '../module/APIManager';
 export default props => {
     const [articles, setArticles] = useState([]);
     
-    const getArticles = () => { APIManager.getAll("articles").then(articles => setArticles(articles)) };
+    const getArticles = () => { APIManager.getAll("articles").then(articles => setArticles(articles.reverse())) };
 
     useEffect(getArticles, []);
 
     const deleteArticle = id => {
         APIManager.delete("articles", id)
             .then(() => APIManager.getAll("articles")
-                .then(articles => setArticles(articles))
+                .then(articles => setArticles(articles.reverse()))
             );
     };
 
     const articlesArr = articles.map(article => {
-        console.log('sup')
         return (
             <ArticleCard
                 key={article.id}
@@ -30,68 +29,15 @@ export default props => {
 
     return (
         <Fragment>
-            <section className="section-content">
-                <button 
-                    type="button"
-                    className="btn"
-                    onClick={() => props.history.push("/articles/new")}>
-                        Add Article
-                </button>
-            </section>
-            <div className="container-cards">
+            <div 
+                className="dim pointer ma3 ph4 blue"
+                onClick={() => props.history.push("/articles/new")}>
+                    Create New Article
+            </div>
+            <hr />
+            <div className="container-cards ma3 ph4 w-80">
                 {articlesArr}
             </div>
         </Fragment>
     );
 };
-
-// import React, { Component, Fragment } from 'react';
-// import APIManager from '../module/APIManager';
-// import ArticleCard from './ArticleCard';
-
-// class ArticleList extends Component {
-//     state = {
-//         articles: [],
-//     }
-
-//     componentDidMount() {
-//         APIManager.getAll("articles")
-//             .then(articles => {console.log(this.state.articles); this.setState({ articles: articles.reverse() })})
-
-        
-//     }
-
-//     deleteArticle = id => {
-//         APIManager.delete("articles", id)
-//             .then(() => APIManager.getAll("articles")
-//                 .then(articles => this.setState({ articles }))
-//             )
-//     }
-
-//     render() {
-//         return (
-//             <Fragment>
-//                 <section className="section-content">
-//                     <button
-//                         type="button"
-//                         className="btn"
-//                         onClick={() => { this.props.history.push("/articles/new") }}>
-//                             Add Article
-//                     </button>
-//                 </section>
-//                 <div className="container-cards">
-//                     {this.state.articles.map(article =>
-//                         <ArticleCard
-//                             key={article.id}
-//                             article={article}
-//                             deleteArticle={this.deleteArticle}
-//                             {...this.props}
-//                         />
-//                     )}
-//                 </div>
-//             </Fragment>
-//         )
-//     }
-// };
-
-// export default ArticleList;
