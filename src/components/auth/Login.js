@@ -1,3 +1,5 @@
+/* author: James Chapman   Purpose: Login for the app */
+
 import React, { Component } from "react"
 
 class Login extends Component {
@@ -40,7 +42,7 @@ class Login extends Component {
                     id="email"
                     placeholder="Email address"
                     required="" autoFocus="" />
-                <label htmlFor="inputEmail">Email address</label>
+                <label htmlFor="inputEmail">Email Address</label>
 
                 <input onChange={this.handleFieldChange} type="password"
                     id="password"

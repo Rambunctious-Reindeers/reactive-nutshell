@@ -22,13 +22,13 @@ class MessageForm extends Component {
             window.alert("Please enter a name and a message!")
         } else {
             this.setState({ loadingStatus: true });
-            const event = {
+            const message = {
                 name: this.state.userName,
                 message: this.state.message,
                 timestamp: Date.now()
             }
 
-            APIManager.post("messages", event)
+            APIManager.post("messages", message)
                 .then(() => this.props.history.push("/messages"))
         }
     }
