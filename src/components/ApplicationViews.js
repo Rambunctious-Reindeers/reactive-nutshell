@@ -13,12 +13,25 @@ import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
+import APIManager from "./module/APIManager";
 
-localStorage.setItem("userId", 1);
 
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
+  getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
+
+
+  buildFriendsList = () => {
+    APIManager.getAll("friends")
+    .then((allFriends) => allFriends.filter(friendship => {
+      if (friendship.loggedInUser === this.getUserId()) {
+        return true
+      } else {
+        return false
+      }
+    }))
+  }
 
   render() {
     return (
@@ -92,7 +105,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/events" render={props => {
             if (this.props.user) {
-              return <EventList {...props} />
+              return <EventList {...props} buildFriendsList={this.buildFriendsList}/>
             } else { return <Redirect to="/login" /> }
           }}
         />
