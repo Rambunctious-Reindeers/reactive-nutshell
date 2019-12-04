@@ -15,7 +15,7 @@ class FriendForm extends Component {
     }
 
     addNewFriend = evt => {
-        console.log(evt)
+        // console.log(evt)
         evt.preventDefault();
 
         let potentialFriendId
