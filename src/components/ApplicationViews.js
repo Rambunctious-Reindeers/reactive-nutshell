@@ -107,7 +107,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/events" render={props => {
             if (this.props.user) {
-              return <EventList {...props} buildFriendsList={this.buildFriendsList} />
+              return <EventList {...props} buildFriendsList={this.buildFriendsList} getUserId={this.getUserId}/>
             } else { return <Redirect to="/login" /> }
           }}
         />

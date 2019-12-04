@@ -18,13 +18,18 @@ class EventList extends Component {
 
                 APIManager.getAll("events")
                     .then((events) => {
-                        const yourEvents = events.filter((event) => friendsList.includes(event.userId))
-                        const sortEvents = yourEvents.sort(function (a, b) {
+                        const unlabeledEvents = events.filter((event) => friendsList.includes(event.userId))
+                        const yourEventList = unlabeledEvents.map((event) => {
+                            const newEvent = event
+                            newEvent.isMine=(event.userId === this.props.getUserId())
+                            return event
+                        })
+                        const sortedEvents = yourEventList.sort(function (a, b) {
                             let dateA = new Date(a.date), dateB = new Date(b.date)
                             return dateA - dateB
                         })
                         this.setState({
-                            events: sortEvents
+                            events: sortedEvents
                         })
                     })
             })
