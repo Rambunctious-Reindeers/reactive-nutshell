@@ -8,6 +8,7 @@ import MessageForm from "./message/MessageForm";
 import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
+import { Redirect } from "react-router-dom"
 
 export default class ApplicationViews extends Component {
 
@@ -47,7 +48,9 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/messages" render={props => {
+            if (this.props.user) {
             return <MessageList {...props} />
+            } else { <Redirect to="/login">}
           }}
         />
         <Route
