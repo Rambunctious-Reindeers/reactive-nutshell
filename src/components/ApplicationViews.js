@@ -14,7 +14,6 @@ import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
 
-localStorage.setItem("userId", 1);
 
 export default class ApplicationViews extends Component {
 
@@ -38,13 +37,13 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/friends" render={props => {
-            return <FriendList {...props}/>
+            return <FriendList {...props} />
           }}
         />
-                <Route 
-        path="/friends/new" render={props => {
-          return <FriendForm {...props} />
-        }} 
+        <Route
+          path="/friends/new" render={props => {
+            return <FriendForm {...props} />
+          }}
         />
 
         <Route
@@ -115,25 +114,25 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-            return <ArticleList {...props} />
-          } else { return <Redirect to="/login" /> }
+              return <ArticleList {...props} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           path="/articles/new"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={true} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={true} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />
         <Route
           path="/articles/:articleId(\d+)/edit"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={false} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={false} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />
