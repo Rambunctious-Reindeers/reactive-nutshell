@@ -21,7 +21,7 @@ class TaskForm extends Component {
             window.alert("Please enter a task and a date!")
         } else {
             this.setState({ loadingStatus: true });
-            const userId = localStorage.getItem("userId")
+            const userId = JSON.parse(localStorage.getItem("credentials")).userId
             const task = {
                 taskName: this.state.taskName,
                 dueDate: this.state.date,
