@@ -25,6 +25,7 @@ class EventForm extends Component {
         } else {
             this.setState({ loadingStatus: true });
             const event = {
+                userId: JSON.parse(localStorage.getItem("credentials")).userId,
                 name: this.state.eventName,
                 date: this.state.date,
                 location: this.state.eventLocation
@@ -39,6 +40,7 @@ class EventForm extends Component {
         evt.preventDefault()
         this.setState({ loadingStatus: true });
         const editedEvent = {
+            userId: JSON.parse(localStorage.getItem("credentials")).userId,
             id: this.props.match.params.eventId,
             name: this.state.eventName,
             date: this.state.date,
@@ -54,6 +56,7 @@ class EventForm extends Component {
             APIManager.get("events", this.props.match.params.eventId)
             .then(event => {
               this.setState({
+                userId: JSON.parse(localStorage.getItem("credentials")).userId,
                 eventName: event.name,
                 date: event.date,
                 eventLocation: event.location,
