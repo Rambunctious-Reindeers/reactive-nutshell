@@ -38,7 +38,7 @@ class MessageList extends Component {
 
       
     addFriend = id => {
-        console.log(id)
+        // console.log(id)
         // evt.preventDefault();
 
         let potentialFriendId = id
