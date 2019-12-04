@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import FriendCard from './FriendCard'
 
-const loggedInUserId = 1
+let loggedInUserId = parseInt(localStorage.getItem("userId"))
 
 class FriendList extends Component {
 

@@ -36,12 +36,12 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/friends" render={props => {
+          exact path="/friends" render={props => {
             return <FriendList {...props}/>
           }}
         />
                 <Route 
-        exact path="/friends/new" render={props => {
+        path="/friends/new" render={props => {
           return <FriendForm {...props} />
         }} 
         />
