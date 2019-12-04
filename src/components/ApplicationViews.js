@@ -1,6 +1,8 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import Login from "./auth/Login";
+import ArticleList from "./news/ArticleList";
+import ArticleForm from "./news/ArticleForm";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
 import MessageList from "./message/MessageList";
@@ -9,6 +11,8 @@ import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 
+localStorage.setItem("userId", 1);
+
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
@@ -16,15 +20,6 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-
-
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
-
         <Route
           exact path="/register" render={props => {
             return <RegistrationForm setUser={this.props.setUser} {...props} />
@@ -92,6 +87,19 @@ export default class ApplicationViews extends Component {
           exact path="/events/:eventId(\d+)/edit" render={props => {
             return <EventForm {...props} isNew={false} />
           }}
+        />
+
+        <Route 
+          exact path="/articles" 
+          render={props => <ArticleList {...props} />} 
+        />
+        <Route 
+          path="/articles/new" 
+          render={props => <ArticleForm {...props} isNew={true} />} 
+        />
+        <Route 
+          path="/articles/:articleId(\d+)/edit" 
+          render={props => <ArticleForm {...props} isNew={false} />}
         />
 
       </React.Fragment>
