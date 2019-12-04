@@ -38,13 +38,11 @@ class EventList extends Component {
 
         return (
             <>
-                <section className="section-content">
-                    <div
-                        className="dim pointer ma3 ph4 blue"
-                        onClick={() => { this.props.history.push("/events/new") }}>
-                            Create New Event
-                    </div>
-                </section>
+                <div
+                    className="dim pointer ma3 ph4 blue"
+                    onClick={() => { this.props.history.push("/events/new") }}>
+                        Create New Event
+                </div>
                 <hr />
                 <div className="container-cards ma3 ph4 w-60">
                     {this.state.events.map((event, index) =>

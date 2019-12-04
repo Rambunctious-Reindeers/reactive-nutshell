@@ -61,16 +61,14 @@ class TaskList extends Component {
 
         return (
             <>
-                <section className="section-content">
-                    <button
-                        type="button"
-                        className="btn"
-                        onClick={() => { this.props.history.push("/tasks/new") }}>
-                        Add Task
-                    </button>
-                </section>
-                <div className="container-cards">
-                    <h2>Uncompleted:</h2>
+                <div
+                    className="dim pointer ma3 ph4 blue"
+                    onClick={() => { this.props.history.push("/tasks/new") }}>
+                    Create New Task
+                </div>
+                <hr />
+                <div className="ma3 ph4 w-60">
+                    <h2 className="ttu f3 fw6">Uncompleted:</h2>
                     {this.state.uncompleteTasks.map((task, index) =>
                         <TaskCard
                             key={task.id}
@@ -82,8 +80,8 @@ class TaskList extends Component {
                         />
                     )}
                 </div>
-                <div className="container-cards">
-                    <h2>Completed:</h2>
+                <div className="ma3 ph4 w-60">
+                    <h2 className="ttu f3 fw6">Completed:</h2>
                     {this.state.completeTasks.map((task) =>
                         <TaskCard
                             key={task.id}

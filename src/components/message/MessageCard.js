@@ -9,7 +9,7 @@ class MessageCard extends Component {
     render() {
 
         return (
-            <div className="card-content">
+            <div className="pv1">
                 <h3>Name: <b>{this.props.message.user.username}</b></h3>
                 <p>Message: {this.props.message.message}</p>
 

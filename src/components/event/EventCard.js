@@ -7,7 +7,7 @@ export default class EventCard extends Component {
         const { history, deleteEvent, isFirst } = this.props;
 
         const cardContent =
-            <div className="pa3 ma3">
+            <div className="pa2 ma2">
                 <div
                     className="f3 fl pr3 pb4 gray hover-orange pointer" 
                     alt="Edit event"
