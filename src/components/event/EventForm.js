@@ -19,7 +19,7 @@ class EventForm extends Component {
     constructNewEvent = evt => {
         evt.preventDefault();
         if (this.state.eventName === "" || this.state.date === "" || this.state.eventLocation === "") {
-            window.alert("Please enter a name and a date!")
+            window.alert("Please enter a name, date and location!")
         } else {
             this.setState({ loadingStatus: true });
             const event = {
@@ -64,48 +64,48 @@ class EventForm extends Component {
     render() {
         return (
             <>
-                <form>
+                <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40">
                     <fieldset>
-                        <div className="formgrid">
-                            <input
-                                type="text"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="eventName"
-                                placeholder="Event Name"
-                                value= {this.state.eventName}
-                            />
-                            <label htmlFor="eventName">Name</label>
-                            <input
-                                type="date"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="date"
-                                placeholder="date"
-                                value= {this.state.date}
-                            />
-                            <label htmlFor="date">date</label>
-
-                            <input
-                                type="text"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="eventLocation"
-                                placeholder="Location"
-                                value= {this.state.eventLocation}
-                            />
-                            <label htmlFor="eventLocation">Location</label>
-                            
-                        </div>
-                        <div className="alignRight">
-                            <button
-                                type="button"
-                                disabled={this.state.loadingStatus}
-                                onClick=
-                                {this.props.isNew ? this.constructNewEvent : this.updateExistingEvent}
-                            >Submit</button>
-                        </div>
+                        <label htmlFor="eventName" className="f6 b db mb2">Name</label>
+                        <input
+                            className="w-100"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="eventName"
+                            placeholder="Event name"
+                            value= {this.state.eventName}
+                        />
                     </fieldset>
+                    <fieldset>
+                        <label htmlFor="date" className="f6 b db mb2">Date</label>
+                        <input
+                            className="w-100"
+                            type="date"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="date"
+                            value= {this.state.date}
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="eventLocation" className="f6 b db mb2">Location</label>
+                        <input
+                            className="w-100"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="eventLocation"
+                            placeholder="Event location"
+                            value= {this.state.eventLocation}
+                        />
+                    </fieldset>
+                        <button
+                            className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+                            type="button"
+                            disabled={this.state.loadingStatus}
+                            onClick={this.props.isNew ? this.constructNewEvent : this.updateExistingEvent}
+                        >Submit</button>
                 </form>
             </>
         )
