@@ -15,13 +15,15 @@ export default class EventCard extends Component {
                         &#x270E;
                 </div>
                 <p className="f7 fw6">{date}</p>
-                <h3 className="ttu f4 fw6 dib">{name} <span className="dib f5 fw5"> at </span> {location}</h3>
-                <button type="button" onClick={() => deleteEvent(id)}>Delete</button>
+                <h3 className="ttu f4 fw6 dib">{name} <span className="dib f5 fw3"> at </span> {location}</h3>
+                <div className="ttu f7 fw6 fr grow pointer orange" onClick={() => deleteEvent(id)}>
+                    Delete event
+                </div>
             </div>;
 
         const cardContainer = isFirst 
-            ? <div className="card-first pv1">{cardContent}</div> 
-            : <div className="pv1">{cardContent}</div>;
+            ? <div className="card-first pv1">{cardContent}</div>
+            : <div className="pv1">{cardContent}<hr /></div>;
 
         return cardContainer;
     }

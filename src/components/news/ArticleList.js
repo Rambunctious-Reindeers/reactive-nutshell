@@ -5,15 +5,18 @@ import APIManager from '../module/APIManager';
 export default props => {
     const [articles, setArticles] = useState([]);
     
-    const getArticles = () => { APIManager.getAll("articles").then(articles => setArticles(articles.reverse())) };
+    const getArticles = () => { 
+        const userId = JSON.parse(localStorage.getItem("credentials")).userId;
+
+        APIManager.get("users", `${userId}?_embed=articles`)
+            .then(({ articles })=> setArticles(articles.reverse()));
+    };
 
     useEffect(getArticles, []);
 
     const deleteArticle = id => {
         APIManager.delete("articles", id)
-            .then(() => APIManager.getAll("articles")
-                .then(articles => setArticles(articles.reverse()))
-            );
+            .then(() => getArticles);
     };
 
     const articlesArr = articles.map(article => {
