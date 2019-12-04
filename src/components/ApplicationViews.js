@@ -13,11 +13,27 @@ import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
+import APIManager from "./module/APIManager";
 
 
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
+  getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
+
+
+  buildFriendsList = () => {
+    return APIManager.getAll("friends")
+      .then((allFriends) => {
+        return allFriends.filter(friendship => {
+          if (friendship.loggedInUserId === this.getUserId()) {
+            return true
+          } else {
+            return false
+          }
+        }).map((friendship) => friendship.userId)
+      })
+  }
 
   render() {
     return (
@@ -31,7 +47,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/login" render={props => {
-            return <Login setUser={this.props.setUser} {...props} />
+            return <Login setUser={this.props.setUser} isAuthenticated={this.isAuthenticated} {...props} />
           }}
         />
 
@@ -91,7 +107,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/events" render={props => {
             if (this.props.user) {
-              return <EventList {...props} />
+              return <EventList {...props} buildFriendsList={this.buildFriendsList} getUserId={this.getUserId}/>
             } else { return <Redirect to="/login" /> }
           }}
         />
@@ -114,7 +130,7 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-              return <ArticleList {...props} />
+              return <ArticleList {...props} buildFriendsList={this.buildFriendsList} />
             } else { return <Redirect to="/login" /> }
           }}
         />
