@@ -1,3 +1,5 @@
+/* author: James Chapman | purpose: This will create the cards that messageList uses to populate the message board */
+
 import React, { Component } from 'react'
 import "../Nutshell.css"
 

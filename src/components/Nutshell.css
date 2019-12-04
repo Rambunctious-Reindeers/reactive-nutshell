@@ -1,3 +1,7 @@
 .card-first {
     background: aliceBlue;
 }
+
+.other-users {
+	border-left: 1px solid seaGreen;
+}

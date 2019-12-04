@@ -1,3 +1,5 @@
+/* author: James Chapman | this was pair coded with the rest of the group | purpose: this is the page that will populate the new events and edit events forms */
+
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager';
 

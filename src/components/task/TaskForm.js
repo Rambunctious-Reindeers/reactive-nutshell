@@ -21,7 +21,7 @@ class TaskForm extends Component {
             window.alert("Please enter a task and a date!")
         } else {
             this.setState({ loadingStatus: true });
-            const userId = localStorage.getItem("userId")
+            const userId = JSON.parse(localStorage.getItem("credentials")).userId
             const task = {
                 taskName: this.state.taskName,
                 dueDate: this.state.date,
@@ -41,7 +41,7 @@ class TaskForm extends Component {
             id: this.props.match.params.taskId,
             taskName: this.state.taskName,
             dueDate: this.state.date,
-            userId: Number(localStorage.getItem("userId"))
+            userId: Number(JSON.parse(localStorage.getItem("credentials")).userId)
         };
 
         APIManager.put("tasks", this.props.match.params.taskId, editedTask)

@@ -5,16 +5,33 @@ import ArticleList from "./news/ArticleList";
 import ArticleForm from "./news/ArticleForm";
 import EventList from "./event/EventList";
 import EventForm from "./event/EventForm";
+import FriendList from "./friend/FriendList";
+import FriendForm from "./friend/FriendForm"
 import MessageList from "./message/MessageList";
 import MessageForm from "./message/MessageForm";
 import TaskList from './task/TaskList'
 import TaskForm from './task/TaskForm'
 import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
+import APIManager from "./module/APIManager";
 
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
+  getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
+
+  buildFriendsList = () => {
+    return APIManager.getAll("friends")
+      .then((allFriends) => {
+        return allFriends.filter(friendship => {
+          if (friendship.loggedInUserId === this.getUserId()) {
+            return true
+          } else {
+            return false
+          }
+        }).map((friendship) => friendship.userId)
+      })
+  }
 
   render() {
     return (
@@ -28,14 +45,18 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/login" render={props => {
-            return <Login setUser={this.props.setUser} {...props} />
+            return <Login setUser={this.props.setUser} isAuthenticated={this.isAuthenticated} {...props} />
           }}
         />
 
         <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+          exact path="/friends" render={props => {
+            return <FriendList {...props} />
+          }}
+        />
+        <Route
+          path="/friends/new" render={props => {
+            return <FriendForm {...props} />
           }}
         />
 
@@ -84,7 +105,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/events" render={props => {
             if (this.props.user) {
-              return <EventList {...props} />
+              return <EventList {...props} buildFriendsList={this.buildFriendsList} getUserId={this.getUserId}/>
             } else { return <Redirect to="/login" /> }
           }}
         />
@@ -107,25 +128,25 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-            return <ArticleList {...props} />
-          } else { return <Redirect to="/login" /> }
+              return <ArticleList {...props} buildFriendsList={this.buildFriendsList} />
+            } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
           path="/articles/new"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={true} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={true} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />
         <Route
           path="/articles/:articleId(\d+)/edit"
-          render={props => { 
+          render={props => {
             if (this.props.user) {
-            return <ArticleForm {...props} isNew={false} /> 
-          } else { return <Redirect to="/login" /> }
+              return <ArticleForm {...props} isNew={false} />
+            } else { return <Redirect to="/login" /> }
           }
           }
         />

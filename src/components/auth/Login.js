@@ -18,11 +18,16 @@ class Login extends Component {
     this.setState(stateToChange)
   }
 
+  componentDidMount() {
+    if (this.props.isAuthenticated()) {
+      this.props.history.push("/messages")
+    }
+  }
+
   handleLogin = (evt) => {
     evt.preventDefault()
     APIManager.getAll(`users?email=${this.state.email}`)
   .then((userInfo) => {
-    console.log(userInfo)
     if (userInfo.length !== 0) {
       if (this.state.password === userInfo[0].password) {
         const authObj = {
@@ -30,7 +35,6 @@ class Login extends Component {
           password: this.state.password,
           userId: userInfo[0].id
       }
-      console.log(authObj)
         this.props.setUser(authObj)
         this.props.history.push("/");
       } else {

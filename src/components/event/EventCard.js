@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import "../Nutshell.css";
+/* author: James Chapman | this was pair coded with the rest of the group |  purpose: This will create the cards that eventList uses to populate the event board */
+
+import React, { Component } from 'react'
+import "../Nutshell.css"
 
 export default class EventCard extends Component {
     render() {
-        const { name, date, location, id } = this.props.event;
+        const { name, date, location, id, isMine } = this.props.event;
         const { history, deleteEvent, isFirst } = this.props;
 
         const cardContent =
@@ -21,9 +23,13 @@ export default class EventCard extends Component {
                 </div>
             </div>;
 
-        const cardContainer = isFirst 
-            ? <div className="card-first pv1">{cardContent}</div>
-            : <div className="pv1">{cardContent}<hr /></div>;
+        const cardContainer = isMine 
+            ? isFirst 
+                ? <div className="card-first pv1">{cardContent}</div> 
+                : <div className="pv1">{cardContent}</div>
+            : isFirst 
+                ? <div className="card-first other-users pv1">{cardContent}</div> 
+                : <div className="other-users pv1">{cardContent}</div>;
 
         return cardContainer;
     }
