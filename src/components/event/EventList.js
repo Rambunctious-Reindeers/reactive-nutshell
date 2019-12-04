@@ -18,6 +18,7 @@ class EventList extends Component {
 
                 APIManager.getAll("events")
                     .then((events) => {
+                        friendsList.push(this.props.getUserId())
                         const unlabeledEvents = events.filter((event) => friendsList.includes(event.userId))
                         const yourEventList = unlabeledEvents.map((event) => {
                             const newEvent = event
