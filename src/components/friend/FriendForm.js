@@ -59,7 +59,7 @@ class FriendForm extends Component {
             <>
                 <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40">
                     <fieldset>
-                        <label htmlFor="friendName">Name</label>
+                        <label htmlFor="friendName" className="f6 b db mb2">Name</label>
                         <input
                             className="w-100"
                             type="text"

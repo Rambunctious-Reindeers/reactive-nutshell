@@ -50,37 +50,42 @@ class RegistrationForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleRegistration}>
+            <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40" onSubmit={this.handleRegistration}>
                 <h3>Register an Account</h3>
-                <div className="formgrid">
-                    <label htmlFor="inputUsername">Username</label>
+                <fieldset>
+                    <label htmlFor="inputUsername" className="f6 b db mb2">Username</label>
                     <input
+                        className="w-100"
                         onChange={this.handleFieldChange}
                         type="username"
                         id="username"
                         placeholder="Full Name"
                         required="" autoFocus="" />
-
-                    <label htmlFor="inputEmail">Email Address</label>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputEmail" className="f6 b db mb2">Email Address</label>
                     <input
+                        className="w-100"
                         onChange={this.handleFieldChange}
                         type="email"
                         id="email"
                         placeholder="Email Address"
                         required="" autoFocus="" />
-
-                    <label htmlFor="inputPassword">Password</label>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputPassword" className="f6 b db mb2">Password</label>
                     <input
+                        className="w-100"
                         onChange={this.handleFieldChange}
                         type="password"
                         id="password"
                         placeholder="Password"
                         required="" autoFocus="" />
-
-                </div>
-
-                <button type="submit">
-                    Register
+                </fieldset>
+                <button 
+                    className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+                    type="submit">
+                        Register
                 </button>
             </form>
         )

@@ -53,27 +53,33 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleLogin}>
-        <fieldset>
-          <h3>Please sign in</h3>
-          <div className="formgrid">
-            <label htmlFor="inputEmail">Email Address</label>
-            <input onChange={this.handleFieldChange} type="email"
+      <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40" onSubmit={this.handleLogin}>
+        <h3>Please sign in</h3>
+          <fieldset>
+            <label htmlFor="inputEmail" className="f6 b db mb2">Email Address</label>
+            <input
+              className="w-100"
+              onChange={this.handleFieldChange} 
+              type="email"
               id="email"
               placeholder="Email address"
               required="" autoFocus="" />
-
-            <label htmlFor="inputPassword">Password</label>
-            <input onChange={this.handleFieldChange} type="password"
+          </fieldset>
+          <fieldset>
+            <label htmlFor="inputPassword" className="f6 b db mb2">Password</label>
+            <input
+              className="w-100"
+              onChange={this.handleFieldChange} 
+              type="password"
               id="password"
               placeholder="Password"
               required="" />
-
-          </div>
-          <button type="submit">
+          </fieldset>
+        <button 
+          className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+          type="submit">
             Sign in
-            </button>
-        </fieldset>
+        </button>
       </form>
     )
   }
