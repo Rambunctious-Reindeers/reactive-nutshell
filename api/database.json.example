@@ -83,28 +83,16 @@
   ],
   "messages": [
     {
-      "userId": 1,
-      "message": "What's up?",
-      "timestamp": 1573675137476,
-      "id": 1
-    },
-    {
+      "id": 2,
       "userId": 1,
       "message": "heyyyyy",
-      "timestamp": 1573847908009,
-      "id": 2
+      "timestamp": 1575481826725
     },
     {
-      "userId": 1,
-      "message": "hey buddy! how are you?",
-      "timestamp": 1573674893926,
-      "id": 3
-    },
-    {
-      "userId": 1,
+      "id": 4,
+      "userId": 2,
       "message": "hey buddy!!!!",
-      "timestamp": 1573676550737,
-      "id": 4
+      "timestamp": 1575555390575
     },
     {
       "userId": 1,
@@ -118,23 +106,12 @@
       "timestamp": 1573676537638,
       "id": 7
     },
-    {
-      "userId": 2,
-      "message": "Hiiii",
-      "timestamp": 1573676537610,
-      "id": 8
-    },
+
     {
       "userId": 3,
       "message": "stop saying hi to me",
       "timestamp": 1573676537620,
       "id": 9
-    },
-    {
-      "userId": 3,
-      "message": "This is getting too hot for me. I'm out.",
-      "timestamp": 1583686548830,
-      "id": 10
     },
     {
       "userId": 4,
@@ -143,52 +120,10 @@
       "id": 11
     },
     {
-      "userId": 4,
-      "message": "You do you, boo.",
-      "timestamp": 1583686548850,
-      "id": 12
-    },
-    {
-      "userId": 3,
-      "message": "Ok. I will.",
-      "timestamp": 1583686548856,
-      "id": 13
-    },
-    {
-      "userId": 3,
-      "message": "...but first, I must dance.",
-      "timestamp": 1583686548880,
-      "id": 14
-    },
-    {
-      "userId": 1,
-      "message": "Hello hi!",
-      "timestamp": 1583686548980,
-      "id": 15
-    },
-    {
-      "userId": 4,
-      "message": "Omigah, Steve.",
-      "timestamp": 1583686549910,
-      "id": 16
-    },
-    {
       "userId": 2,
-      "message": "Steve is becoming a real problem.",
-      "timestamp": 1583686559910,
-      "id": 16
-    },
-    {
-      "userId": 3,
-      "message": "Steve be killin' my vibe yo. I don't wanna dance anymore.",
-      "timestamp": 1583686569910,
-      "id": 17
-    },
-    {
-      "userId": "1",
-      "message": "hello",
-      "timestamp": 1573847884949,
-      "id": 18
+      "message": "hello world",
+      "timestamp": 1575562970202,
+      "id": 19
     }
   ],
   "events": [
@@ -226,6 +161,20 @@
       "date": "2019-12-14",
       "location": "boop",
       "id": 6
+    },
+    {
+      "userId": 2,
+      "name": "lalal",
+      "date": "2019-12-04",
+      "location": "here",
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "name": "lololo",
+      "date": "2019-12-04",
+      "location": "here",
+      "id": 8
     }
   ],
   "tasks": [
@@ -233,11 +182,11 @@
       "userId": 1,
       "taskName": "working",
       "dueDate": "2019-11-11",
-      "completion": true,
+      "completion": false,
       "id": 1
     },
     {
-      "userId": 1,
+      "userId": 2,
       "taskName": "the great expanse",
       "dueDate": "",
       "completion": true,
@@ -247,28 +196,28 @@
       "userId": 1,
       "taskName": "bjpawiobjk",
       "dueDate": "2019-11-14",
-      "completion": true,
+      "completion": false,
       "id": 4
     },
     {
-      "userId": 1,
+      "userId": 2,
       "taskName": "gpwjeaoi",
       "dueDate": "2019-11-14",
-      "completion": true,
+      "completion": false,
       "id": 5
     },
     {
       "userId": 1,
       "taskName": "Go home",
       "dueDate": "2019-11-15",
-      "completion": false,
+      "completion": true,
       "id": 7
     },
     {
       "userId": 1,
       "taskName": "Eat cheese",
       "dueDate": "2019-11-15",
-      "completion": false,
+      "completion": true,
       "id": 8
     },
     {
@@ -284,6 +233,20 @@
       "dueDate": "2019-11-14",
       "completion": true,
       "id": 10
+    },
+    {
+      "taskName": "christmas",
+      "dueDate": "2019-12-25",
+      "completion": false,
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "taskName": "christmas",
+      "dueDate": "2019-12-25",
+      "completion": false,
+      "userId": 2,
+      "id": 12
     }
   ],
   "friends": [

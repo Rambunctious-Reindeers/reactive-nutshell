@@ -9,6 +9,7 @@ class MessageList extends Component {
 
     state = {
         messages: [],
+        isMine: false,
     }
 
     componentDidMount() {
@@ -25,6 +26,7 @@ class MessageList extends Component {
     }
 
     deleteMessage = id => {
+        if(localStorage.getItem("credentials") === id.userId){
         APIManager.delete("messages", id)
           .then(() => {
             APIManager.getMessages()
@@ -34,6 +36,9 @@ class MessageList extends Component {
                 })
               })
           })
+        } else {
+            window.alert("This is not your message to delete!")
+        }
       }
 
       
