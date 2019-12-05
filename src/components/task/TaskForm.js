@@ -53,7 +53,6 @@ class TaskForm extends Component {
         if (!this.props.isNew) {
             APIManager.get("tasks", this.props.match.params.taskId)
                 .then(task => {
-                    console.log(task)
                     this.setState({
                         taskName: task.taskName,
                         date: task.dueDate,
