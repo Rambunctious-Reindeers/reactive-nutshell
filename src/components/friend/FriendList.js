@@ -12,7 +12,7 @@ class FriendList extends Component {
     }
 
     componentDidMount() {
-        APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
+        APIManager.getAll(`friends?loggedInUserId=${loggedInUserId()}&_expand=user`)
           .then((friends) => {
             this.setState({
               friends: friends
@@ -23,7 +23,7 @@ class FriendList extends Component {
       deleteFriend = id => {
         APIManager.delete("friends", id)
           .then(() => {
-            APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
+            APIManager.getAll(`friends?loggedInUserId=${loggedInUserId()}&_expand=user`)
               .then((newFriends) => {
                 this.setState({
                   friends: newFriends
