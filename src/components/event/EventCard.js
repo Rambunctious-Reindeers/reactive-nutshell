@@ -26,7 +26,7 @@ export default class EventCard extends Component {
         const cardContainer = isMine 
             ? isFirst 
                 ? <div className="card-first pv1">{cardContent}</div> 
-                : <div className="pv1">{cardContent}</div>
+                : <div className="pv1">{cardContent}<hr/></div>
             : isFirst 
                 ? <div className="card-first other-users pv1">{cardContent}</div> 
                 : <div className="other-users pv1">{cardContent}</div>;

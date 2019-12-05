@@ -80,15 +80,13 @@ class MessageList extends Component {
 
         return (
             <>
-                <section className="section-content">
-                    <button
-                        type="button"
-                        className="btn"
-                        onClick={() => { this.props.history.push("/messages/new") }}>
-                        Add Message
-                    </button>
-                </section>
-                <div className="container-cards">
+                <div
+                    className="dim pointer ma3 blue"
+                    onClick={() => { this.props.history.push("/messages/new") }}>
+                        Add New Message
+                </div>
+                <hr />
+                <div className="ma3">
                     {this.state.messages.map(message =>
                         <MessageCard
                             key={message.id}

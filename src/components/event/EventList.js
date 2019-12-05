@@ -57,7 +57,7 @@ class EventList extends Component {
                         Create New Event
                 </div>
                 <hr />
-                <div className="container-cards ma3 ph4 w-60">
+                <div className="ma3 ph4 w-60">
                     {this.state.events.map((event, index) =>
                         <EventCard
                             key={event.id}

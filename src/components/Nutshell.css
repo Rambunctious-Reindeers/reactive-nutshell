@@ -3,5 +3,6 @@
 }
 
 .other-users {
-	border-left: 1px solid seaGreen;
+	border-left: 3px solid seaGreen;
+	border-bottom: 0.5px solid lightGray;
 }

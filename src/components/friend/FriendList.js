@@ -35,19 +35,22 @@ class FriendList extends Component {
 
         return (
             <>
-            <section className="section-content">
-                <button type="button" className="btn" onClick={() => { this.props.history.push("/friends/new")}}>Add Friend</button>
-            </section>
-            <div className="container-cards">
-                {this.state.friends.map((friend) => 
-                <FriendCard 
-                    key={friend.id}
-                    friend={friend}
-                    deleteFriend={this.deleteFriend}
-                    {...this.props}
-                    />
-                )}
-            </div>
+              <div 
+                className="dim pointer ma3 ph4 blue" 
+                onClick={() => { this.props.history.push("/friends/new")}}>
+                  Add Friend
+              </div>
+              <hr/>
+              <div className="ma3 ph3">
+                  {this.state.friends.map((friend) => 
+                  <FriendCard 
+                      key={friend.id}
+                      friend={friend}
+                      deleteFriend={this.deleteFriend}
+                      {...this.props}
+                      />
+                  )}
+              </div>
             </>
         )
     }  

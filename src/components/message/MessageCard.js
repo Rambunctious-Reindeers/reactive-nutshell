@@ -11,18 +11,26 @@ class MessageCard extends Component {
     render() {
 
         return (
-            <div className="pv1">
-                <div className="add-friend" onClick={() => {if(window.confirm('Do you want to add as a friend?')) this.props.addFriend(this.props.message.user.id)}}>
-                <h3>Name: <b>{this.props.message.user.username}</b></h3>
+            <div className="pa2 ma2">
+                <div
+                    className="pl2 dib f3 fl pb4 gray hover-orange pointer"
+                    onClick={() => { this.props.history.push(`/messages/${this.props.message.id}/edit`) }}>
+                        &#x270E;
                 </div>
-                <p>Message: {this.props.message.message}</p>
-
-                <button type="button"
-                    onClick={() => { this.props.history.push(`/messages/${this.props.message.id}/edit`) }}>Edit</button>
-                <button type="button" onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button>
+                <div 
+                    className="pl2 dib f3 fl pr3 pb4 gray dim pointer"
+                    onClick={() => this.props.deleteMessage(this.props.message.id)}>
+                        &#x1F5D1;
+                </div>
+                <div 
+                    className="add-friend dib pointer hover-blue" 
+                    onClick={() => {if(window.confirm('Do you want to add as a friend?')) this.props.addFriend(this.props.message.user.id)}}>
+                    <h3 className="ttu f4 fw6">{this.props.message.user.username}:</h3>
+                </div>
+                <p className="pl2 dib">{this.props.message.message}</p>
             </div>
         )
     }
 }
 
-export default MessageCard
+export default MessageCard;
