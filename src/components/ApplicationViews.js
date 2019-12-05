@@ -130,7 +130,7 @@ export default class ApplicationViews extends Component {
           exact path="/articles"
           render={props => {
             if (this.props.user) {
-              return <ArticleList {...props} buildFriendsList={this.buildFriendsList} />
+              return <ArticleList {...props} buildFriendsList={this.buildFriendsList} getUserId={this.getUserId}/>
             } else { return <Redirect to="/login" /> }
           }}
         />

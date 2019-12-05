@@ -5,7 +5,18 @@ import APIManager from '../module/APIManager';
 export default props => {
     const [articles, setArticles] = useState([]);
     
-    const getArticles = () => { APIManager.getAll("articles").then(articles => setArticles(articles.reverse())) };
+    const getArticles = () => { 
+        props.buildFriendsList()
+        .then((friends) => {
+            APIManager.getAll("articles")
+        .then(articles => {
+            friends.push(props.getUserId())
+            const articlesFiltered = articles.filter(article => friends.includes(article.userId))
+            setArticles(articlesFiltered.reverse())})
+        })
+
+         
+    };
 
     useEffect(getArticles, []);
 

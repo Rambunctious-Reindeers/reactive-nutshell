@@ -36,7 +36,8 @@ class RegistrationForm extends Component {
                     this.props.setUser({
                         email: this.state.email,
                         password: this.state.password,
-                        userId: newUser[0].id
+                        userId: newUser[0].id,
+                        name: newUser[0].username
                     })
                     this.props.history.push("/")
                 })
