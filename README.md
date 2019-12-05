@@ -1,3 +1,5 @@
+[//]: # (author: James Chapman || purpose: instruct how to install the app and the ERD for it)
+
 # Reactive Nutshell: The Information Dashboard
 
 ## Setup: Follow these steps exactly
