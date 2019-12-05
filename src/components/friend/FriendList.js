@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import FriendCard from './FriendCard'
 
-let loggedInUserId = JSON.parse(localStorage.getItem("credentials")).userId
+const loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
 class FriendList extends Component {
 

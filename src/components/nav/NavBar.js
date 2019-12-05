@@ -7,7 +7,7 @@ class NavBar extends Component {
 
     handleLogout = () => {
         this.props.clearUser()
-        this.props.history.push('/')
+        this.props.history.push('/login')
     }
 
     getUsersName = () => JSON.parse(localStorage.getItem("credentials")).name

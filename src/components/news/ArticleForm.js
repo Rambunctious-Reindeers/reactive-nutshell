@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import APIManager from '../module/APIManager';
 
-const userId = JSON.parse(localStorage.getItem("credentials")).userId;
+const userId = () => JSON.parse(localStorage.getItem("credentials")).userId;
 
 export default class ArticleForm extends Component {
     state = {
