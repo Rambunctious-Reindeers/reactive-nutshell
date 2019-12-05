@@ -18,7 +18,7 @@ export default props => {
         })
     };
 
-    useEffect(getArticles, []);
+    useEffect(getArticles, [articles]);
 
     const deleteArticle = id => {
         APIManager.delete("articles", id)
