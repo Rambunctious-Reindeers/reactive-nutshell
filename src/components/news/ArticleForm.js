@@ -8,7 +8,8 @@ export default class ArticleForm extends Component {
         title: "",
         url: "",
         synopsis: "",
-        timestamp: ""
+        timestamp: "",
+        userId: userId()
     }
 
     handleFieldChange = evt => {
