@@ -18,7 +18,10 @@ import APIManager from "./module/APIManager";
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
-  getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
+  getUserId = () => {
+  if (this.isAuthenticated()) {
+  return JSON.parse(localStorage.getItem("credentials")).userId
+  }}
 
   buildFriendsList = () => {
     return APIManager.getAll("friends")

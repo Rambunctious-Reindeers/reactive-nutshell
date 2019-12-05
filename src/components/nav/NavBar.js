@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 class NavBar extends Component {
 
     handleLogout = () => {
-        this.props.clearUser()
         this.props.history.push('/login')
+        this.props.clearUser()
+        
     }
 
     getUsersName = () => JSON.parse(localStorage.getItem("credentials")).name
