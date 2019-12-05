@@ -25,7 +25,7 @@ class Nutshell extends Component {
     localStorage.removeItem("credentials")
     
     this.setState({
-      user: this.isAuthenticated
+      user: this.isAuthenticated()
     });
   }
 
