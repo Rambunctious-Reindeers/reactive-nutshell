@@ -20,10 +20,13 @@ class TaskCard extends Component {
         const cardContent =
             <div className="pa2 ma2">
                 <div
-                    className="f3 fl pr3 pb4 gray hover-orange pointer" 
+                    className="f4 fl pr3 pb4 gray hover-orange pointer" 
                     alt="Edit task"
                     onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>
                         &#x270E;
+                </div>
+                <div className="f4 fl pr3 pb4 gray dim pointer" onClick={() => this.props.deleteTask(this.props.task.id)}>
+                    &#x1F5D1;
                 </div>
                 {cardCheckbox}
                 <h3 className="ttu f4 fw6 dib pl3 blue">{taskName}</h3>
@@ -31,9 +34,6 @@ class TaskCard extends Component {
                     <span className="i dib">Finish By:</span>
                     <span className="fw6 dib pl1">{dueDate}</span>
                 </p>
-                <div className="ttu f7 fw6 fr grow pointer orange" onClick={() => this.props.deleteTask(this.props.task.id)}>
-                    Delete task
-                </div>
             </div>
 
         const cardContainer = this.props.isFirst ?
