@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import FriendCard from './FriendCard'
 
-let loggedInUserId = JSON.parse(localStorage.getItem("credentials")).userId
+const loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
 class FriendList extends Component {
 
@@ -12,7 +12,7 @@ class FriendList extends Component {
     }
 
     componentDidMount() {
-        APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
+        APIManager.getAll(`friends?loggedInUserId=${loggedInUserId()}&_expand=user`)
           .then((friends) => {
             this.setState({
               friends: friends
@@ -23,7 +23,7 @@ class FriendList extends Component {
       deleteFriend = id => {
         APIManager.delete("friends", id)
           .then(() => {
-            APIManager.getAll(`friends?loggedInUserId=${loggedInUserId}&_expand=user`)
+            APIManager.getAll(`friends?loggedInUserId=${loggedInUserId()}&_expand=user`)
               .then((newFriends) => {
                 this.setState({
                   friends: newFriends

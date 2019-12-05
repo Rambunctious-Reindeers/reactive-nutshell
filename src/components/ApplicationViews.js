@@ -49,9 +49,19 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+<Route
+          exact path="/" render={props => {
+            return !this.isAuthenticated() ?
+            <Login setUser={this.props.setUser} isAuthenticated={this.isAuthenticated} {...props} />
+            : <MessageList {...props} />
+          }}
+        />
+
         <Route
           exact path="/friends" render={props => {
+            if (this.props.user) {
             return <FriendList {...props} />
+          } else { return <Redirect to="/login" /> }
           }}
         />
         <Route
