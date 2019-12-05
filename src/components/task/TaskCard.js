@@ -14,22 +14,30 @@ class TaskCard extends Component {
         const { taskName, dueDate } = this.props.task;
 
         const cardCheckbox = this.props.task.completion ?
-            <input type="checkbox" defaultChecked={true} onClick={() => this.props.handleCheckbox((this.props.task.id), this.props.task.completion)} /> :
-            <input type="checkbox"  onClick={() => this.props.handleCheckbox(this.props.task.id)} />
+            <input className="dib" type="checkbox" defaultChecked={true} onClick={() => this.props.handleCheckbox((this.props.task.id), this.props.task.completion)} /> :
+            <input className="dib" type="checkbox"  onClick={() => this.props.handleCheckbox(this.props.task.id)} />
 
         const cardContent =
-            <div className="card-content">
+            <div className="pa2 ma2">
+                <div
+                    className="f4 fl pr3 pb4 gray hover-orange pointer" 
+                    alt="Edit task"
+                    onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>
+                        &#x270E;
+                </div>
+                <div className="f4 fl pr3 pb4 gray dim pointer" onClick={() => this.props.deleteTask(this.props.task.id)}>
+                    &#x1F5D1;
+                </div>
                 {cardCheckbox}
-                <h3>Task: <b>{taskName}</b></h3>
-                <p>Finish By: {dueDate}</p>
-
-                <button type="button"
-                    onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</button>
-                <button type="button" onClick={() => this.props.deleteTask(this.props.task.id)}>Delete</button>
+                <h3 className="ttu f4 fw6 dib pl3 blue">{taskName}</h3>
+                <p className="f6">
+                    <span className="i dib">Finish By:</span>
+                    <span className="fw6 dib pl1">{dueDate}</span>
+                </p>
             </div>
 
         const cardContainer = this.props.isFirst ?
-            <div className="card-first">{cardContent}</div> : <div className="card">{cardContent}</div>
+            <div className="card-first pv1">{cardContent}</div> : <div className="pv1">{cardContent}<hr/></div>
 
 
         return cardContainer;

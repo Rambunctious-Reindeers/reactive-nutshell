@@ -15,12 +15,10 @@ import RegistrationForm from "./auth/RegistrationForm";
 import { Redirect } from "react-router-dom"
 import APIManager from "./module/APIManager";
 
-
 export default class ApplicationViews extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
   getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
-
 
   buildFriendsList = () => {
     return APIManager.getAll("friends")
@@ -157,5 +155,3 @@ export default class ApplicationViews extends Component {
     );
   }
 }
-
-

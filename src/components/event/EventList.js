@@ -52,15 +52,12 @@ class EventList extends Component {
 
         return (
             <>
-                <section className="section-content">
-                    <button
-                        type="button"
-                        className="btn"
-                        onClick={() => { this.props.history.push("/events/new") }}>
-                        Add Event
-                    </button>
-                </section>
-                <div className="container-cards">
+                <div
+                    className="dim pointer ma3 ph4 blue"
+                    onClick={() => { this.props.history.push("/events/new") }}>
+                        Create New Event
+                </div>
+                <div className="ma3 ph4 w-60">
                     {this.state.events.map((event, index) =>
                         <EventCard
                             key={event.id}
@@ -74,7 +71,6 @@ class EventList extends Component {
             </>
         )
     }
-
 }
 
 export default EventList

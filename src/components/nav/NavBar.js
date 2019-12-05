@@ -15,7 +15,7 @@ class NavBar extends Component {
         return (
             <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
                 {this.props.isAuthenticated()? 
-    <div>Hi {this.getUsersName()}!</div> : null
+                <div className="pl4">Hi {this.getUsersName()}!</div> : null
             }
                 
                 <ul className="nav nav-pills nav-fill">
