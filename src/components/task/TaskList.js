@@ -1,3 +1,4 @@
+/*author: Sullivan Pierce,    Purpose: this component creates all of the articlecards to be shown */
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import TaskCard from './TaskCard'

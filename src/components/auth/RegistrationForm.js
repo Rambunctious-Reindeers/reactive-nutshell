@@ -1,4 +1,4 @@
-/* author: James Chapman   purpose: Registration for the app*/
+/* authors: James Chapman, Sullivan Pierce   purpose: Registration for the app*/
 
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
