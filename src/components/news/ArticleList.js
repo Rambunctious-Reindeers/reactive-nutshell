@@ -1,3 +1,5 @@
+// Author: Manila Bui
+// Author: Sullivan Pierce | friends in articles
 import React, { Fragment, useState, useEffect } from 'react';
 import ArticleCard from './ArticleCard';
 import APIManager from '../module/APIManager';
@@ -7,24 +9,20 @@ export default props => {
     
     const getArticles = () => { 
         props.buildFriendsList()
-        .then((friends) => {
-            APIManager.getAll("articles")
-        .then(articles => {
-            friends.push(props.getUserId())
-            const articlesFiltered = articles.filter(article => friends.includes(article.userId))
-            setArticles(articlesFiltered.reverse())})
+            .then((friends) => {
+                APIManager.getAll("articles")
+            .then(articles => {
+                friends.push(props.getUserId())
+                const articlesFiltered = articles.filter(article => friends.includes(article.userId))
+                setArticles(articlesFiltered.reverse())})
         })
-
-         
     };
 
     useEffect(getArticles, []);
 
     const deleteArticle = id => {
         APIManager.delete("articles", id)
-            .then(() => APIManager.getAll("articles")
-                .then(articles => setArticles(articles.reverse()))
-            );
+            .then(() => getArticles);
     };
 
     const articlesArr = articles.map(article => {

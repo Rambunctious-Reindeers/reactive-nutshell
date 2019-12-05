@@ -57,26 +57,25 @@ class FriendForm extends Component {
     render() {
         return (
             <>
-                <form>
+                <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40">
                     <fieldset>
-                        <div className="formgrid">
-                            <input
-                                type="text"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="friendName"
-                                value={this.state.friendName}
-                            />
-                            <label htmlFor="friendName">Name</label>
-                        </div>
-                        <div className="alignRight">
-                            <button
-                                type="button"
-                                disabled={this.state.loadingStatus}
-                                onClick={this.addNewFriend}
-                            >Add Friend</button>
-                        </div>
+                        <label htmlFor="friendName" className="f6 b db mb2">Name</label>
+                        <input
+                            className="w-100"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="friendName"
+                            placeholder="Your friend's name"
+                            value={this.state.friendName}
+                        />
                     </fieldset>
+                    <button
+                        className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+                        type="button"
+                        disabled={this.state.loadingStatus}
+                        onClick={this.addNewFriend}
+                    >Add Friend</button>
                 </form>
             </>
         )

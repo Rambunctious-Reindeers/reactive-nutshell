@@ -66,39 +66,38 @@ class TaskForm extends Component {
     render() {
         return (
             <>
-                <form>
+                <form className="ph5 pt4 pb5 mt5 ml4 br3 shadow-1 w-40">
                     <fieldset>
-                        <div className="formgrid">
-                            <label htmlFor="taskName">Task</label>
-                            <input
-                                type="text"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="taskName"
-                                placeholder="Task"
-                                value={this.state.taskName}
-                            />
-                            <label htmlFor="date">Finish By</label>
-                            <input
-                                type="date"
-                                required
-                                onChange={this.handleFieldChange}
-                                id="date"
-                                placeholder="date"
-                                value={this.state.date}
-                            />
-
-
-                        </div>
-                        <div className="alignRight">
-                            <button
-                                type="button"
-                                disabled={this.state.loadingStatus}
-                                onClick=
-                                {this.props.isNew ? this.constructNewTask : this.updateExistingTask}
-                            >Submit</button>
-                        </div>
+                        <label htmlFor="taskName" className="f6 b db mb2">Task</label>
+                        <input
+                            className="w-100"
+                            type="text"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="taskName"
+                            placeholder="Your task"
+                            value={this.state.taskName}
+                        />
                     </fieldset>
+                    <fieldset>
+                        <label htmlFor="date" className="f6 b db mb2">Finish By</label>
+                        <input
+                            className="w-100"
+                            type="date"
+                            required
+                            onChange={this.handleFieldChange}
+                            id="date"
+                            placeholder="date"
+                            value={this.state.date}
+                        />
+                    </fieldset>
+                    <button
+                        className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+                        type="button"
+                        disabled={this.state.loadingStatus}
+                        onClick=
+                        {this.props.isNew ? this.constructNewTask : this.updateExistingTask}
+                    >Submit</button>
                 </form>
             </>
         )

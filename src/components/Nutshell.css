@@ -1,4 +1,8 @@
 .card-first {
-    background: gray;
-    font-size: larger;
+    background: aliceBlue;
+}
+
+.other-users {
+	border-left: 3px solid seaGreen;
+	padding-left: 10px;
 }
