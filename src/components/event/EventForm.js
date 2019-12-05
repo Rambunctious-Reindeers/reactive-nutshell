@@ -105,12 +105,12 @@ class EventForm extends Component {
                             value= {this.state.eventLocation}
                         />
                     </fieldset>
-                        <button
-                            className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
-                            type="button"
-                            disabled={this.state.loadingStatus}
-                            onClick={this.props.isNew ? this.constructNewEvent : this.updateExistingEvent}
-                        >Submit</button>
+                    <button
+                        className="f6 fw5 bg-white orange hover-blue link pointer pa2 pv1 mt2 mb3 mr3 fr br2"
+                        type="button"
+                        disabled={this.state.loadingStatus}
+                        onClick={this.props.isNew ? this.constructNewEvent : this.updateExistingEvent}
+                    >Submit</button>
                 </form>
             </>
         )
