@@ -57,7 +57,6 @@ class EventList extends Component {
                     onClick={() => { this.props.history.push("/events/new") }}>
                         Create New Event
                 </div>
-                <hr />
                 <div className="ma3 ph4 w-60">
                     {this.state.events.map((event, index) =>
                         <EventCard

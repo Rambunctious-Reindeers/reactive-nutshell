@@ -86,7 +86,7 @@ class MessageList extends Component {
         return (
             <>
                 <div
-                    className="dim pointer ma3 blue"
+                    className="dim pointer ph3 ma3 blue"
                     onClick={() => { this.props.history.push("/messages/new") }}>
                         Add New Message
                 </div>
