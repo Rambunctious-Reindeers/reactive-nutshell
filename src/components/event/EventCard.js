@@ -7,7 +7,7 @@ import "../Nutshell.css"
 
 class EventCard extends Component {
 
-
+    getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
     render() {
 
         const { name, date, location } = this.props.event;
@@ -18,9 +18,16 @@ class EventCard extends Component {
                 <p>Date: {date}</p>
                 <p>location: {location}</p>
 
+                {this.getUserId() === this.props.event.userId ?
+                <>
                 <button type="button"
-                    onClick={() => { this.props.history.push(`/events/${this.props.event.id}/edit`) }}>Edit</button>
-                <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete</button>
+                onClick={() => { this.props.history.push(`/events/${this.props.event.id}/edit`) }}>Edit</button>
+            <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete</button>
+            </>
+            : null
+            }
+                
+
             </div>
 
         const cardContainer =
