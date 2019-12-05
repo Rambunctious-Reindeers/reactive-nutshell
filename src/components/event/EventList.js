@@ -1,4 +1,4 @@
-/* author: James Chapman | this was pair coded with the rest of the group | purpose: this card builds the main page for events */
+/* authors: James Chapman, Sullivan Pierce | this was pair coded with the rest of the group | purpose: this card builds the main page for events */
 
 
 import React, { Component } from 'react'

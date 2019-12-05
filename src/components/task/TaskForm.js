@@ -1,3 +1,4 @@
+/*author: Sullivan Pierce,  Purpose: this creates a form for either editing a task or creating a new one */
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager';
 

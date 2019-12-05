@@ -1,4 +1,4 @@
-/* author: James Chapman   Purpose: Login for the app */
+/* authors: James Chapman, Sullivan Pierce   Purpose: Login for the app */
 
 import React, { Component } from "react"
 import APIManager from "../module/APIManager"
