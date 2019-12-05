@@ -19,7 +19,7 @@ export default class ArticleForm extends Component {
     }
 
     constructNewArticle = evt => {
-        const { title, url, synopsis } = this.state;
+        const { title, url, synopsis, userId } = this.state;
 
         evt.preventDefault();
         if (title === "" || url === "" || synopsis === "") {
