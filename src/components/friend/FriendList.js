@@ -1,3 +1,4 @@
+// Author: Adam Byrd
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
 import FriendCard from './FriendCard'

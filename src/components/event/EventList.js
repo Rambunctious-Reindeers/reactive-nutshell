@@ -1,4 +1,4 @@
-/* author: James Chapman | this was pair coded with the rest of the group | purpose: this card builds the main page for events */
+/* authors: James Chapman, Sullivan Pierce | this was pair coded with the rest of the group | purpose: this card builds the main page for events */
 
 
 import React, { Component } from 'react'
@@ -18,6 +18,7 @@ class EventList extends Component {
 
                 APIManager.getAll("events")
                     .then((events) => {
+                        friendsList.push(this.props.getUserId())
                         const unlabeledEvents = events.filter((event) => friendsList.includes(event.userId))
                         const yourEventList = unlabeledEvents.map((event) => {
                             const newEvent = event

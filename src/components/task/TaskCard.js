@@ -1,3 +1,5 @@
+/*author:  Sullivan Pierce,  purpose:  this component creates an individual card for a single task */
+
 import React, { Component } from 'react'
 import "../Nutshell.css"
 

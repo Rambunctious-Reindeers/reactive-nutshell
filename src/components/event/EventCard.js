@@ -1,5 +1,4 @@
 /* author: James Chapman | this was pair coded with the rest of the group |  purpose: This will create the cards that eventList uses to populate the event board */
-
 import React, { Component } from 'react'
 import "../Nutshell.css"
 
@@ -32,5 +31,5 @@ export default class EventCard extends Component {
                 : <div className="other-users pv1">{cardContent}</div>;
 
         return cardContainer;
-    }
+    };
 };

@@ -1,4 +1,4 @@
-/* author: James Chapman   purpose: Registration for the app*/
+/* authors: James Chapman, Sullivan Pierce   purpose: Registration for the app*/
 
 import React, { Component } from 'react'
 import APIManager from '../module/APIManager'
@@ -36,9 +36,10 @@ class RegistrationForm extends Component {
                     this.props.setUser({
                         email: this.state.email,
                         password: this.state.password,
-                        userId: newUser[0].id
+                        userId: newUser[0].id,
+                        name: newUser[0].username
                     })
-                    this.props.history.push("/")
+                    this.props.history.push("/messages")
                 })
 
         )
