@@ -23,13 +23,13 @@ class EventCard extends Component {
                 <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete</button>
             </div>
 
-        const cardContainer = 
-        this.props.event.isMine ?
-        this.props.isFirst ?
-            <div className="card-first">{cardContent}</div> : <div className="card">{cardContent}</div>
-            :
-            this.props.isFirst ?
-            <div className="card-first other-users">{cardContent}</div> : <div className="card other-users">{cardContent}</div>
+        const cardContainer =
+            this.props.event.isMine ?
+                this.props.isFirst ?
+                    <div className="card-first">{cardContent}</div> : <div className="card">{cardContent}</div>
+                :
+                this.props.isFirst ?
+                    <div className="card-first other-users">{cardContent}</div> : <div className="card other-users">{cardContent}</div>
 
 
         return cardContainer;

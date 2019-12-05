@@ -3,11 +3,11 @@
 import React, { Component } from 'react'
 import "../Nutshell.css"
 
-
+const getUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
 class MessageCard extends Component {
 
-
+    
     render() {
 
         return (
@@ -17,9 +17,13 @@ class MessageCard extends Component {
                 </div>
                 <p>Message: {this.props.message.message}</p>
 
+                {getUserId() === this.props.message.userId ?
+                <div>
                 <button type="button"
                     onClick={() => { this.props.history.push(`/messages/${this.props.message.id}/edit`) }}>Edit</button>
                 <button type="button" onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button>
+                </div> : null
+    }
             </div>
         )
     }

@@ -37,7 +37,7 @@ class Login extends Component {
               name: userInfo[0].username
             }
             this.props.setUser(authObj)
-            this.props.history.push("/");
+            this.props.history.push("/messages");
           } else {
             window.alert("This password does not match this email!")
           }
