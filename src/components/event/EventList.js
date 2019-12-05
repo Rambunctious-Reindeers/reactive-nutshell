@@ -12,7 +12,7 @@ class EventList extends Component {
         events: [],
     }
 
-    componentDidMount() {
+    getEvents = () => {
         this.props.buildFriendsList()
             .then((friendsList) => {
 
@@ -36,15 +36,14 @@ class EventList extends Component {
             })
     }
 
+    componentDidMount() {
+        this.getEvents()
+    }
+
     deleteEvent = id => {
         APIManager.delete("events", id)
             .then(() => {
-                APIManager.getAll("events")
-                    .then((newEvents) => {
-                        this.setState({
-                            events: newEvents
-                        })
-                    })
+                this.getEvents()
             })
     }
 
